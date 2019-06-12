@@ -2,7 +2,6 @@ import React from "react";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
 import BlogScreen from "./screens/BlogScreen";
-import AppNavigator from "./Navigator/AppNavigator";
 
 const initialState = {
   action: ""
@@ -16,7 +15,7 @@ const store = createStore(reducer);
 
 const App = () => (
   <Provider store={store}>
-    <AppNavigator />
+    <BlogScreen />
   </Provider>
 );
 

@@ -9,7 +9,7 @@ import { Dimensions } from "react-native";
 import styled from "styled-components";
 import { Icon } from "expo";
 
-class BlogScreen extends React.Component {
+class SelectedBlogScreen extends React.Component {
   static navigationOptions = {
     header: null
   };
