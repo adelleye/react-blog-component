@@ -16,7 +16,9 @@ class SelectedBlogScreen extends React.Component {
   render() {
     return (
       <Container>
-        <ScrollView />
+        <ScrollView>
+          <Text>Section Screen</Text>
+        </ScrollView>
       </Container>
     );
   }
@@ -24,3 +26,9 @@ class SelectedBlogScreen extends React.Component {
 
 export default SelectedBlogScreen;
 const ScreenWidth = Dimensions.get("window").width;
+
+const Container = styled.View`
+  flex: 1;
+`;
+
+const Text = styled.Text``;
