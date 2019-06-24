@@ -3,7 +3,6 @@ import {
   ScrollView,
   SafeAreaView,
   TouchableOpacity,
-  Button,
   FlatList,
   View,
   StyleSheet,
@@ -14,6 +13,7 @@ import { Dimensions } from "react-native";
 import styled from "styled-components";
 import { connect } from "react-redux";
 import blogData from "../data/blogData";
+import { withNavigation } from "react-navigation";
 
 function mapStateToProps(state) {
   return { action: state.action };
@@ -23,22 +23,21 @@ const screenHeight = Dimensions.get("window").height;
 const screenWidth = Dimensions.get("window").width;
 
 class FlatListItem extends React.Component {
+  state = { showItemIndex: [false, false] };
+
   render() {
     return (
       <View style={styles.container}>
-        <TouchableOpacity>
-          <View style={styles.ImageContainer}>
-            <View style={styles.ImageCover}>
-              <Image
-                source={this.props.item.firstImage}
-                style={styles.FirstImage}
-              />
-            </View>
+        <View style={styles.ImageContainer}>
+          <View style={styles.ImageCover}>
+            <Image
+              source={this.props.item.firstImage}
+              style={styles.FirstImage}
+            />
           </View>
-
-          <Text style={styles.titleOfBlog}>{this.props.item.titleOfBlog}</Text>
-          <Text style={styles.writeUp}>{this.props.item.writeUp}</Text>
-        </TouchableOpacity>
+        </View>
+        <Text style={styles.titleOfBlog}>{this.props.item.titleOfBlog}</Text>
+        <Text style={styles.writeUp}>{this.props.item.writeUp}</Text>
       </View>
     );
   }
@@ -59,7 +58,14 @@ class BlogScreen extends React.Component {
             <FlatList
               data={blogData}
               renderItem={({ item, index }) => {
-                return <FlatListItem item={item} index={index} />;
+                return (
+                  <TouchableOpacity
+                    key={index}
+                    onPress={() => this.props.navigation.push("SelectedBlog")}
+                  >
+                    <FlatListItem item={item} index={index} />
+                  </TouchableOpacity>
+                );
               }}
             />
           </View>

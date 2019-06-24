@@ -16,9 +16,11 @@ class SelectedBlogScreen extends React.Component {
   render() {
     return (
       <Container>
-        <ScrollView>
-          <Text>Section Screen</Text>
-        </ScrollView>
+        <SafeAreaView>
+          <ScrollView>
+            <Text>Section Screen</Text>
+          </ScrollView>
+        </SafeAreaView>
       </Container>
     );
   }
@@ -31,4 +33,6 @@ const Container = styled.View`
   flex: 1;
 `;
 
-const Text = styled.Text``;
+const Text = styled.Text`
+  margin-top: 100px;
+`;
